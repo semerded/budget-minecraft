@@ -156,13 +156,14 @@ class AppConstructor():
         self.APPdisplayFlags = flags
         self.APPdisplay = pygame.display.set_mode(
             (screenWidth, screenHeight), *flags)
-        self.__updateMainDisplay()
+        self.__updateDisplayDimensions()
         
-    def keyboardClick(self, key: int): # TODO find more optimal method to do this
+    def keyboardClick(self, *keys: int): # TODO find more optimal method to do this
         for event in self.getEvents:
             if event.type == pygame.KEYDOWN:
-                if event.key == key:
-                    return True
+                for key in keys:
+                    if event.key == key:
+                        return True
         return False
         
     def keyboardRelease(self, key: int): # same as above
@@ -231,7 +232,7 @@ class AppConstructor():
         else:
             self.aspectRatioAxis = axis.x
     
-    def __updateMainDisplay(self):
+    def __updateDispalyDimensions(self):
         global mainDisplay, appScreenWidth, appScreenHeight
         mainDisplay = self.APPdisplay
         appScreenWidth, appScreenHeight = self.getAppScreenDimensions
