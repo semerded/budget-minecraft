@@ -18,8 +18,8 @@ from typing_extensions import TypeAlias, Literal
 
 
 from pygameAddons.enums import *
-from colors import Color
-from fonts import Font
+from pygameAddons.colors import Color
+from pygameAddons.fonts import Font
 
 pygame.init()
 
