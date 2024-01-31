@@ -156,7 +156,7 @@ class AppConstructor():
         self.APPdisplayFlags = flags
         self.APPdisplay = pygame.display.set_mode(
             (screenWidth, screenHeight), *flags)
-        self.__updateDisplayDimensions()
+        self.__updateDispalyDimensions()
         
     def keyboardClick(self, *keys: int): # TODO find more optimal method to do this
         for event in self.getEvents:
