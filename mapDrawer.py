@@ -13,8 +13,8 @@ class MapDrawer(MapReader):
         
     def drawMap(self):
         self.isolateVisableTerrain()
-        self.renderdMapData = self.mapData
         for heightIndex, row in enumerate(self.renderdMapData):
             for widthIndex, terrainColor in enumerate(row):
                 if TERRAIN_TEXTURE[terrainColor] != None:
-                    game.Drawing.rectangle(widthIndex * game.ScreenUnit.vw(5), heightIndex * game.ScreenUnit.vw(5), game.ScreenUnit.vw(5), game.ScreenUnit.vw(5), TERRAIN_TEXTURE[terrainColor])
+                    rect = game.Drawing.rectangle(widthIndex * game.ScreenUnit.vw(5), heightIndex * game.ScreenUnit.vw(5), game.ScreenUnit.vw(5), game.ScreenUnit.vw(5), TERRAIN_TEXTURE[terrainColor])
+                    game.Drawing.border(1, rect, Color.BLACK)

@@ -1,6 +1,7 @@
 import pygameAddons.pygameaddons as game
 from pygameAddons.colors import Color
 from mapDrawer import MapDrawer
+from character.character import Character
 
 
 GAME = game.AppConstructor(game.ScreenUnit.dw(100),game.ScreenUnit.dh(100), game.pygame.NOFRAME)
@@ -9,10 +10,18 @@ GAME.centerApp()
 
 mapDrawer = MapDrawer("map.json")
 
+testCharacter = Character(100, "")
+
 while True:
     GAME.eventHandler(game.pygame.event.get())
     GAME.maindisplay.fill(Color.LIGHT_BLUE)
     
+    # temp
+    if GAME.keyboardClick(game.pygame.K_ESCAPE):
+        exit()
+        
     mapDrawer.drawMap()
+    
+    testCharacter.draw()
 
     GAME.updateDisplay()

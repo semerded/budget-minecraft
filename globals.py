@@ -1,1 +1,1 @@
-playerPosition = [25, 4]
+playerPosition = [50, 10]
