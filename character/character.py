@@ -1,12 +1,12 @@
 from enum import Enum
-
-
+import pygameAddons.pygameaddons as game
 
 class Character:
-    def __init__(self, hp) -> None:
+    def __init__(self, hp, texturePath: str) -> None:
         self.maxhp = hp
         self.hp = hp
         self.alive = True
+        self.texturePath = texturePath
         
     def moveLeft(self):
         pass
@@ -29,5 +29,9 @@ class Character:
     
     def dead(self):
         self.alive = False
+        
+    def draw(self):
+        # texture path
+        game.Drawing.rectangle(game.ScreenUnit.vw(47.5), game.ScreenUnit.vw(30), game.ScreenUnit.vw(5), game.ScreenUnit.vw(10), game.Color.RED)
     
   
