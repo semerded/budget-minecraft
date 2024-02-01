@@ -9,6 +9,9 @@ except ImportError:
 else:
     pygame__textinputImported = True
 
+version = '1.1.0'
+def getVersion():
+    print(version)
     
 import random, logging, PIL.Image
 from multipledispatch import dispatch
@@ -478,10 +481,7 @@ class Interactions:
         return mouseButton.value
 
     def isMouseOver(rect: pygame.Rect):
-        mousePos = pygame.mouse.get_pos()
-        if rect.collidepoint(mousePos):
-            return True
-        return False
+        return rect.collidepoint(pygame.mouse.get_pos())
     
     def isMouseInArea(topCord: int, bottomCord: int):
         rect = pygame.Rect(topCord, bottomCord)
@@ -490,62 +490,48 @@ class Interactions:
     def isMouseInPolygon(polygon: list | tuple [list | tuple]) -> bool:
         return Display.pointInPolygon(pygame.mouse.get_pos(), polygon)
 
-    def isClicked(mouseButton: mouseButton):
-        if Interactions._mouseButtonPositiveFlank(mouseButton):
-            return True
-        return False
+    def isClicked(mouseButton: mouseButton) -> bool:
+        return Interactions._mouseButtonPositiveFlank(mouseButton)
     
     def isClickedInRect(rect: pygame.Rect, mouseButton: mouseButton):
-        if Interactions.isMouseOver(rect) and Interactions.isClicked(mouseButton):
-            return True
-        return False
+        return Interactions.isMouseOver(rect) and Interactions.isClicked(mouseButton)
     
     def isClickedInPolygon(polygon: list | tuple [list | tuple], mouseButton: mouseButton) -> bool:
-        if Interactions.isMouseInPolygon(polygon) and Interactions.isClicked(mouseButton):
-            return True
-        return False
+        return Interactions.isMouseInPolygon(polygon) and Interactions.isClicked(mouseButton)
 
     def isReleased(mouseButton: mouseButton):
-        if Interactions._mouseButtonNegativeFlank(mouseButton):
-            return True
-        return False
+        return Interactions._mouseButtonNegativeFlank(mouseButton)
     
     def isReleasedInRect(rect: pygame.Rect, mouseButton: mouseButton):
-        if Interactions.isMouseOver(rect) and Interactions.isReleased(mouseButton):
-            return True
-        return False
-
+        return Interactions.isMouseOver(rect) and Interactions.isReleased(mouseButton)
+    
     def isHolding(mouseButton: mouseButton):
-        if Interactions._isMouseButtonPressed(mouseButton):
-            return True
-        return False
+        return Interactions._isMouseButtonPressed(mouseButton)
     
     def isHoldingInRect(rect: pygame.Rect, mouseButton: mouseButton):
-        if Interactions.isMouseOver(rect) and Interactions._isMouseButtonPressed(mouseButton):
-            return True
-        return False
+        return Interactions.isMouseOver(rect) and Interactions._isMouseButtonPressed(mouseButton)
     
     # scrolling
     def isScrolledUp():
-        if Interactions._isMouseButtonPressed(mouseButton.scrollUp):
-            return True
-        return False
+        return Interactions._isMouseButtonPressed(mouseButton.scrollUp)
     
     def isScrolledDown():
-        if Interactions._isMouseButtonPressed(mouseButton.scrollDown):
-            return True
-        return False
+        return Interactions._isMouseButtonPressed(mouseButton.scrollDown)
     
     def isScrolled():
-        if Interactions._isMouseButtonPressed(mouseButton.scrollUp) or Interactions._isMouseButtonPressed(mouseButton.scrollDown):
-            return True
+        return Interactions._isMouseButtonPressed(mouseButton.scrollUp) or Interactions._isMouseButtonPressed(mouseButton.scrollDown)
+    
+    # keyboard
+    def keyIsPressed(*key: int):
+        keyboard = pygame.key.get_pressed()
+        for _key in key:
+            if keyboard[_key]:
+                return True
         return False
     
     # other
     def rectInRect(masterRect: pygame.Rect, childRect: pygame.Rect):
-        if masterRect.colliderect(childRect):
-            return True
-        return False
+        return masterRect.colliderect(childRect)
     
 class Updating:
     def updateDisplay():
