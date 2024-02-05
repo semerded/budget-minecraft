@@ -1,5 +1,7 @@
 from enum import Enum
 import pygameAddons.pygameaddons as game
+from math import ceil
+import globals
 
 class BaseCharacter:
     def __init__(self, hp, texturePath: str) -> None:
@@ -33,10 +35,12 @@ class BaseCharacter:
         
     def draw(self):
         # texture path
+        self.groundCharacter()
         game.Drawing.rectangle(game.ScreenUnit.vw(47.5), game.ScreenUnit.vw(30), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), game.Color.RED)
     
     def groundCharacter(self):
         if not self.jumping:
-            pass
+            if globals.mapData[ceil(globals.playerPosition[1] + 1)][ceil(globals.playerPosition[0])] == 0:
+                globals.playerPosition[1] += 0.10
     
   

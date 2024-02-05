@@ -1,1 +1,2 @@
-playerPosition = [50, 20]
+playerPosition = [50, 25]
+mapData = []

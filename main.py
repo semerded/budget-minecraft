@@ -24,7 +24,7 @@ while True:
     if GAME.keyboardClick(game.pygame.K_ESCAPE):
         sys.exit()
     
-    controls.checkForInput()
+    controls.playerMovement()
     
     mapDrawer.drawMap()
     
