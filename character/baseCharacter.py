@@ -1,12 +1,13 @@
 from enum import Enum
 import pygameAddons.pygameaddons as game
 
-class Character:
+class BaseCharacter:
     def __init__(self, hp, texturePath: str) -> None:
         self.maxhp = hp
         self.hp = hp
         self.alive = True
         self.texturePath = texturePath
+        self.jumping = False
         
     def moveLeft(self):
         pass
@@ -32,6 +33,10 @@ class Character:
         
     def draw(self):
         # texture path
-        game.Drawing.rectangle(game.ScreenUnit.vw(47.5), game.ScreenUnit.vw(30), game.ScreenUnit.vw(5), game.ScreenUnit.vw(10), game.Color.RED)
+        game.Drawing.rectangle(game.ScreenUnit.vw(47.5), game.ScreenUnit.vw(30), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), game.Color.RED)
+    
+    def groundCharacter(self):
+        if not self.jumping:
+            pass
     
   

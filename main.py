@@ -1,16 +1,20 @@
 import pygameAddons.pygameaddons as game
 from pygameAddons.colors import Color
 from mapDrawer import MapDrawer
-from character.character import Character
+from character.player import Player
+from controls import Controls
+import sys, globals
 
 
-GAME = game.AppConstructor(game.ScreenUnit.dw(100),game.ScreenUnit.dh(100), game.pygame.NOFRAME)
+GAME = game.AppConstructor(game.ScreenUnit.dw(50),game.ScreenUnit.dh(50), game.pygame.NOFRAME)
 GAME.setAspectratio(game.ScreenUnit.aspectRatio(game.aspectRatios.ratio16to9))
 GAME.centerApp()
 
 mapDrawer = MapDrawer("map.json")
 
-testCharacter = Character(100, "")
+testCharacter = Player(100, "")
+
+controls = Controls(GAME)
 
 while True:
     GAME.eventHandler(game.pygame.event.get())
@@ -18,8 +22,10 @@ while True:
     
     # temp
     if GAME.keyboardClick(game.pygame.K_ESCAPE):
-        exit()
-        
+        sys.exit()
+    
+    controls.checkForInput()
+    
     mapDrawer.drawMap()
     
     testCharacter.draw()
