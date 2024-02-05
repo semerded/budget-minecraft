@@ -10,7 +10,7 @@ class BaseCharacter:
         self.alive = True
         self.texturePath = texturePath
         self.jumping = False
-        self.jumpForAmountOfFrames = 30
+        self.jumpForAmountOfFrames = 20
         self.jumpFrameCounter = 0
         
     def moveLeft(self):
@@ -50,7 +50,7 @@ class BaseCharacter:
     def groundCharacter(self):
         if not self.jumping:
             if not self.isCharacterOnGround():
-                globals.playerPosition[1] += 0.25
+                globals.playerPosition[1] += 0.35
                 
     def isCharacterOnGround(self):
         return globals.mapData[floor(globals.playerPosition[1] + 1)][floor(globals.playerPosition[0])] != 0 or globals.mapData[floor(globals.playerPosition[1] + 1)][ceil(globals.playerPosition[0])] != 0

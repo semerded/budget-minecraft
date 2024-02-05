@@ -28,7 +28,5 @@ while True:
     mapDrawer.drawMap()
     
     testCharacter.draw() 
-    print(globals.mapData[round(globals.playerPosition[1])][round(globals.playerPosition[0])], globals.playerPosition)
-    # globals.mapData[round(globals.playerPosition[1])][round(globals.playerPosition[0]) - 1] = 3
     controls.playerMovement()
     GAME.updateDisplay()

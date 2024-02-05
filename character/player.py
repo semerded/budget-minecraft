@@ -17,7 +17,7 @@ class Player(BaseCharacter):
         
         if self.jumping:
             self.jump()
-            globals.playerPosition[1] -= 0.17
+            globals.playerPosition[1] -= 0.27
         if self.isCharacterOnGround():
             self.jumpCounter = 0
             
