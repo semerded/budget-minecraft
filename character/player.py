@@ -1,5 +1,6 @@
 from character.baseCharacter import BaseCharacter
 from controls import Controls
+from block.blockBreaking import BlockBreaking
 import pygameAddons.pygameaddons as game
 import globals
 
@@ -7,6 +8,7 @@ class Player(BaseCharacter):
     def __init__(self, GAME: game.AppConstructor, hp, texturePath: str) -> None:
         super().__init__(hp, texturePath)
         self.controls = Controls(GAME)
+        self.blockBreaking = BlockBreaking()
         self.jumpCounter = 0
     def playerJump(self):
         if self.jumpCounter < 2 and self.controls.playerJump():
@@ -23,6 +25,7 @@ class Player(BaseCharacter):
             
     def draw(self):
         self.characterHandler()
+        self.blockBreaking.checkForBlockBreak()
         self.playerJump()
         
     def _checkForValidBlockToBreak(self):

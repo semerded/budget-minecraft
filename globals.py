@@ -4,8 +4,7 @@ mapData = []
 renderdMapData = []
 TERRAIN_TEXTURE = [None, Color.GREEN, Color.BROWN, Color.LIGHT_GRAY]
 
-playerHeight = [14, 15]
-groundHeight = 16
-ceilingHeight = 13
+generatedPlayerY = [14, 15]
+generatedPlayerX = 25
 playerRect = None
 

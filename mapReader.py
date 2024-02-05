@@ -1,6 +1,6 @@
 import json, globals
 import pygameAddons.pygameaddons as game
-from block import Block
+from block.block import Block
 
 class MapReader:
     def __init__(self, mapPath: str) -> None:
@@ -22,5 +22,5 @@ class MapReader:
         for height in range(*heightRange):
             widthList = []
             for width in range(*widthRange):
-                widthList.append(Block(globals.mapData[height][width]))
+                widthList.append(Block(globals.mapData[height][width], width, height))
             globals.renderdMapData.append(widthList)

@@ -16,17 +16,19 @@ testCharacter = Player(GAME, 100, "")
 
 controls = Controls(GAME)
 
+
 while True:
     GAME.eventHandler(game.pygame.event.get())
     GAME.maindisplay.fill(Color.LIGHT_BLUE)
     
-    # temp
+    # temp (wordt verandert met menu)
     if GAME.keyboardClick(game.pygame.K_ESCAPE):
         sys.exit() 
     
+    controls.playerMovement()
     
     mapDrawer.drawMap()
     
     testCharacter.draw() 
-    controls.playerMovement()
     GAME.updateDisplay()
+    

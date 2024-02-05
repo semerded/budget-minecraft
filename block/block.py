@@ -2,9 +2,10 @@ import pygameAddons.pygameaddons as game
 import globals
 
 class Block:
-    def __init__(self, blockType) -> None:
+    def __init__(self, blockType, xInMainMatrix, yInMainMatrix) -> None:
         self.color = globals.TERRAIN_TEXTURE[blockType]
         self.rect = game.pygame.Rect(0,0, 0, 0)
+        self.mainMatrixPos = (xInMainMatrix, yInMainMatrix)
         
     def place(self, x, y, xOffset, yOffset):
         if not self.isAir():
@@ -15,6 +16,10 @@ class Block:
     @property
     def getRect(self):
         return self.rect
+    
+    @property
+    def getMainPos(self):
+        return self.mainMatrixPos
     
     def isAir(self):
         return self.color == None
