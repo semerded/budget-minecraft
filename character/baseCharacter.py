@@ -1,6 +1,6 @@
 from enum import Enum
 import pygameAddons.pygameaddons as game
-from math import ceil
+from math import ceil, floor
 import globals
 
 class BaseCharacter:
@@ -10,6 +10,8 @@ class BaseCharacter:
         self.alive = True
         self.texturePath = texturePath
         self.jumping = False
+        self.jumpForAmountOfFrames = 30
+        self.jumpFrameCounter = 0
         
     def moveLeft(self):
         pass
@@ -18,7 +20,12 @@ class BaseCharacter:
         pass
     
     def jump(self):
-        pass
+        if self.jumping:
+            self.jumpFrameCounter += 1
+        if self.jumpFrameCounter == self.jumpForAmountOfFrames:
+            self.jumpFrameCounter = 0
+            self.jumping = False
+        
     
     def updateHealth(self, difference: int):
         self.hp += difference
@@ -33,14 +40,23 @@ class BaseCharacter:
     def dead(self):
         self.alive = False
         
-    def draw(self):
+    def characterHandler(self):
         # texture path
         self.groundCharacter()
-        game.Drawing.rectangle(game.ScreenUnit.vw(47.5), game.ScreenUnit.vw(30), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), game.Color.RED)
+        self._roundGroundPosition()
+        #TODO
+        globals.playerRect = game.Drawing.rectangle(game.ScreenUnit.vw(50), game.ScreenUnit.vw(30), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), game.Color.RED)
     
     def groundCharacter(self):
         if not self.jumping:
-            if globals.mapData[ceil(globals.playerPosition[1] + 1)][ceil(globals.playerPosition[0])] == 0:
-                globals.playerPosition[1] += 0.10
+            if not self.isCharacterOnGround():
+                globals.playerPosition[1] += 0.25
+                
+    def isCharacterOnGround(self):
+        return globals.mapData[floor(globals.playerPosition[1] + 1)][floor(globals.playerPosition[0])] != 0 or globals.mapData[floor(globals.playerPosition[1] + 1)][ceil(globals.playerPosition[0])] != 0
+    
+    def _roundGroundPosition(self):
+        if not self.jumping and self.isCharacterOnGround():
+            globals.playerPosition[1] = floor(globals.playerPosition[1])
     
   

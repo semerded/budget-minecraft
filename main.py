@@ -12,7 +12,7 @@ GAME.centerApp()
 
 mapDrawer = MapDrawer("map.json")
 
-testCharacter = Player(100, "")
+testCharacter = Player(GAME, 100, "")
 
 controls = Controls(GAME)
 
@@ -22,12 +22,13 @@ while True:
     
     # temp
     if GAME.keyboardClick(game.pygame.K_ESCAPE):
-        sys.exit()
+        sys.exit() 
     
-    controls.playerMovement()
     
     mapDrawer.drawMap()
     
-    testCharacter.draw()
-
+    testCharacter.draw() 
+    print(globals.mapData[round(globals.playerPosition[1])][round(globals.playerPosition[0])], globals.playerPosition)
+    # globals.mapData[round(globals.playerPosition[1])][round(globals.playerPosition[0]) - 1] = 3
+    controls.playerMovement()
     GAME.updateDisplay()

@@ -1,11 +1,10 @@
 import json, globals
 import pygameAddons.pygameaddons as game
-from math import ceil, floor
+from block import Block
 
 class MapReader:
     def __init__(self, mapPath: str) -> None:
         self.mapPath = mapPath
-        self.renderdMapData: list = []
         self.xOffset = 0
         self.yOffset = 0
         
@@ -14,13 +13,14 @@ class MapReader:
             globals.mapData = json.load(filePath)
         
     def isolateVisableTerrain(self):
-        self.renderdMapData = []
-        widthRange = (ceil(globals.playerPosition[0] - 30), ceil(globals.playerPosition[0] + 30))
-        heightRange = (ceil(globals.playerPosition[1] - 15), ceil(globals.playerPosition[1] + 15))
-        self.xOffset = (globals.playerPosition[0] - 30) - floor(globals.playerPosition[0] - 30)
-        self.yOffset = (globals.playerPosition[1] - 15) - floor(globals.playerPosition[1] - 15)
+        globals.renderdMapData = []
+        widthRange = (round(globals.playerPosition[0] - 25), round(globals.playerPosition[0] + 27))
+        heightRange = (round(globals.playerPosition[1] - 15), round(globals.playerPosition[1] + 15))
+        self.xOffset = (globals.playerPosition[0] - 30) - round(globals.playerPosition[0] - 30)
+        self.yOffset = (globals.playerPosition[1] - 15) - round(globals.playerPosition[1] - 15)
+        # globals.mapData[round(globals.playerPosition[1])][round(globals.playerPosition[0])] = 3
         for height in range(*heightRange):
             widthList = []
             for width in range(*widthRange):
-                widthList.append(globals.mapData[height][width])
-            self.renderdMapData.append(widthList)
+                widthList.append(Block(globals.mapData[height][width]))
+            globals.renderdMapData.append(widthList)
