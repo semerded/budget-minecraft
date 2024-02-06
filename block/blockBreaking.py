@@ -6,6 +6,7 @@ class BlockBreaking:
         self.blockBreakRadius = []
     
     def calculateBlockBreakingRadius(self):
+        self.blockBreakRadius = []
         for height in range(globals.generatedPlayerY[0] - 5, globals.generatedPlayerY[0] + 6):
             widthList = []
             for width in range(globals.generatedPlayerX - 5, globals.generatedPlayerX + 6):
@@ -19,4 +20,4 @@ class BlockBreaking:
                 for block in blockList:
                     if game.Interactions.isMouseOver(block.getRect):
                         globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
-                    
+                        return

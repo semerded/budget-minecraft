@@ -6,7 +6,7 @@ from controls import Controls
 import sys, globals
 
 
-GAME = game.AppConstructor(game.ScreenUnit.dw(50),game.ScreenUnit.dh(50), game.pygame.NOFRAME)
+GAME = game.AppConstructor(game.ScreenUnit.dw(100),game.ScreenUnit.dh(100), game.pygame.NOFRAME)
 GAME.setAspectratio(game.ScreenUnit.aspectRatio(game.aspectRatios.ratio16to9))
 GAME.centerApp()
 
