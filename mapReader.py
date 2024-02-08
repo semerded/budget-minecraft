@@ -18,7 +18,7 @@ class MapReader:
         heightRange = (round(globals.playerPosition[1] - 15), round(globals.playerPosition[1] + 15))
         self.xOffset = (globals.playerPosition[0] - 30) - round(globals.playerPosition[0] - 30)
         self.yOffset = (globals.playerPosition[1] - 15) - round(globals.playerPosition[1] - 15)
-        # globals.mapData[round(globals.playerPosition[1])][round(globals.playerPosition[0])] = 3
+
         for height in range(*heightRange):
             widthList = []
             for width in range(*widthRange):
