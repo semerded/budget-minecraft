@@ -18,7 +18,7 @@ underground:
     wildslime
 
 ores:
-    diamand
+    diamond
     obamium
     kool
     ruby

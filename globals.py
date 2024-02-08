@@ -1,4 +1,5 @@
 from pygameAddons.colors import Color
+
 playerPosition = [50, 25]
 mapData = []
 renderdMapData = []
