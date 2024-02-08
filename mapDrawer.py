@@ -8,8 +8,7 @@ class MapDrawer(MapReader):
     def __init__(self, mapPath: str) -> None:
         super().__init__(mapPath)
         self.openAndReadFile()
-    
-        
+         
     def drawMap(self):
         self.isolateVisableTerrain()
         for y, blockRow in enumerate(globals.renderdMapData):

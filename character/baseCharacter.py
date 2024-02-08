@@ -21,6 +21,7 @@ class BaseCharacter:
     
     def jump(self):
         if self.jumping:
+            self._checkHeadCollision()
             self.jumpFrameCounter += 1
         if self.jumpFrameCounter == self.jumpForAmountOfFrames:
             self.jumpFrameCounter = 0
@@ -58,5 +59,10 @@ class BaseCharacter:
     def _roundGroundPosition(self):
         if not self.jumping and self.isCharacterOnGround():
             globals.playerPosition[1] = floor(globals.playerPosition[1])
+            
+    def _checkHeadCollision(self):
+        if globals.mapData[ceil(globals.playerPosition[1] - 2)][floor(globals.playerPosition[0])] != 0 or globals.mapData[ceil(globals.playerPosition[1] - 2)][ceil(globals.playerPosition[0])] != 0 :
+            self.jumping = False
+            self.jumpFrameCounter = 0
     
   
