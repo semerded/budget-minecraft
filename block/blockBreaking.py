@@ -1,5 +1,6 @@
 import globals
 import pygameAddons.pygameaddons as game
+from block.block import Block
 
 class BlockBreaking:
     def __init__(self) -> None:
@@ -17,6 +18,7 @@ class BlockBreaking:
         if game.Interactions.isClicked(game.mouseButton.leftMouseButton):
             self.calculateBlockBreakingRadius()
             for blockList in self.blockBreakRadius:
+                block: Block
                 for block in blockList:
                     if game.Interactions.isMouseOver(block.getRect):
                         globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
