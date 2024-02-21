@@ -10,7 +10,7 @@ class Player(BaseCharacter):
         super().__init__(hp, texturePath)
         self.controls = Controls(GAME)
         self.blockBreaking = BlockBreaking()
-        self.blockPlacing = BlockPlacing()
+        self.blockPlacing = BlockPlacing(game.pygame.Rect(game.ScreenUnit.vw(50), game.ScreenUnit.vw(28), game.ScreenUnit.vw(2), game.ScreenUnit.vw(4)))
         self.jumpCounter = 0
         self.playerImage = game.Image("character/jamal.png")
         self.playerImage.resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(4))

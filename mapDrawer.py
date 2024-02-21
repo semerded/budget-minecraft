@@ -1,6 +1,7 @@
 from mapReader import MapReader
 import pygameAddons.pygameaddons as game
 from pygameAddons.colors import Color
+from block.block import Block
 import globals
 
 
@@ -12,5 +13,6 @@ class MapDrawer(MapReader):
     def drawMap(self):
         self.isolateVisableTerrain()
         for y, blockRow in enumerate(globals.renderdMapData):
+            block : Block
             for x, block in enumerate(blockRow):
                 block.place(x, y,self.xOffset, self.yOffset)
