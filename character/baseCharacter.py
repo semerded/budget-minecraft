@@ -46,7 +46,7 @@ class BaseCharacter:
         self.groundCharacter()
         self._roundGroundPosition()
         #TODO
-        globals.playerRect = game.Drawing.rectangle(game.ScreenUnit.vw(50), game.ScreenUnit.vw(30), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), game.Color.RED)
+        # globals.playerRect = game.Drawing.rectangle(game.ScreenUnit.vw(50), game.ScreenUnit.vw(30), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), game.Color.RED)
     
     def groundCharacter(self):
         if not self.jumping:
