@@ -3,6 +3,7 @@ from pygameAddons.colors import Color
 from mapDrawer import MapDrawer
 from character.player import Player
 from controls import Controls
+from hotbar import HotBar
 import sys, globals
 
 
@@ -15,6 +16,8 @@ mapDrawer = MapDrawer("map.json")
 testCharacter = Player(GAME, 100, "")
 
 controls = Controls(GAME)
+
+hotbar = HotBar()
 
 
 while True:
@@ -30,5 +33,6 @@ while True:
     mapDrawer.drawMap()
     
     testCharacter.draw() 
+    hotbar.draw()
     GAME.updateDisplay()
     
