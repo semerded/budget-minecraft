@@ -1,30 +1,37 @@
-listWithAllBlocks ={
-    "Air" : 0,
-    "Grass" : 1,
-    "Dirt" : 2,
-    "Sand" : 3,
-    "Gravel" : 4,
-    "Wood" : 5,
-    "Leaves" : 6,
-    "Ironblock" : 7,
+{
+    "Surface" : {
+        "Air" : 0,
+        "Grass" : 1,
+        "Dirt" : 2,
+        "Sand" : 3,
+        "Gravel" : 4,
+        "Wood" : 5,
+        "Leaves" : 6,
+        "Ironblock" : 7
+    },
 
-    "Stone" : 8,
-    "Bedrock" : 9,
-    "Birdshit" : 10,
-    "Dinoshit" : 11,
-    "Hardstone" : 12,
-    "Softstone" : 13,
-    "Hotstone" : 14,
-    "Wildslime" : 15,
+    "Underground" : {
+        "Stone" : 8,
+        "Bedrock" : 9,
+        "Birdshit" : 10,
+        "Dinoshit" : 11,
+        "Hardstone" : 12,
+        "Softstone" : 13,
+        "Hotstone" : 14,
+        "Wildslime" : 15
+    },
 
-    "Diamond" : 16,
-    "Obamium" : 17,
-    "Coal" : 18,
-    "Ruby" : 19,
-    "Java" : 20,
-    "Dildo" : 21,
-    "Iron" : 22,
-    "Gold" : 23,
-    "Silver" : 24,
-    "Copper" : 25,
+    "Ores" : {
+        "Diamond" : 16,
+        "Obamium" : 17,
+        "Coal" : 18,
+        "Ruby" : 19,
+        "Java" : 20,
+        "Dildo" : 21,
+        "Iron" : 22,
+        "Gold" : 23,
+        "Silver" : 24,
+        "Copper" : 25,
+        "Uranium" : 26
+    }
 }

@@ -28,4 +28,3 @@ ores:
     gold
     silver
     copper
-
