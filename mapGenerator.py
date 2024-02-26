@@ -55,12 +55,5 @@ for heightLayer in range(height):
         elif heightLayer > 256:
             mapLayer.append(mapdata["Surface"]["Air"])
 
-
-
-
-
-
-
-
     print(mapLayer)
     map.append(mapLayer)
