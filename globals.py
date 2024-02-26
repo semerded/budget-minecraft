@@ -11,6 +11,8 @@ BLOCK_TEXTURES = []
 
 makeBlockTextureList()
 
+blockInHand = 1
+
 
 generatedPlayerY = [14, 15]
 generatedPlayerX = 25

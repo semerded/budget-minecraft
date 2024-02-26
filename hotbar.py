@@ -1,14 +1,26 @@
 import pygameAddons.pygameaddons as game 
+import globals
 
 class HotBar:
     def __init__(self) -> None:
         self.hotbarBorderColor = [[250, True], [170, False], [85, False]]
+        self.selectedHotSlot = 0
+        self.blocksLinkedToHotbarSlot = [1, 2, 8, 5, 3, 4, 7, 17, 20]
     
     def draw(self):
         self._rgb()
         for index in range(9):
             rect = game.Drawing.rectangle(game.ScreenUnit.vw(32) + (game.ScreenUnit.vw(4) * index), game.ScreenUnit.vh(92) + game.ScreenUnit.vw(0.5), game.ScreenUnit.vw(3.5), game.ScreenUnit.vw(3.5))
-            game.Drawing.border(int(game.ScreenUnit.vw(0.5)), rect, self.getHotbarColor)
+            if index == self.selectedHotSlot:
+                game.Drawing.border(int(game.ScreenUnit.vw(0.5)), rect, game.Color.WHITE)
+            else:
+                game.Drawing.border(int(game.ScreenUnit.vw(0.5)), rect, self.getHotbarColor)
+            
+            
+            if game.Interactions.isHoldingInRect(rect, game.mouseButton.leftMouseButton):
+                globals.blockInHand = self.blocksLinkedToHotbarSlot[index]
+                self.selectedHotSlot = index
+                
             
             
     def _rgb(self):
