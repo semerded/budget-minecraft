@@ -1,9 +1,16 @@
 from pygameAddons.colors import Color
+from block.block import makeBlockTextureList
+
+
+
 
 playerPosition = [50, 25]
 mapData = []
 renderdMapData = []
-TERRAIN_TEXTURE = [None, Color.GREEN, Color.BROWN, Color.LIGHT_GRAY]
+BLOCK_TEXTURES = []
+
+makeBlockTextureList()
+
 
 generatedPlayerY = [14, 15]
 generatedPlayerX = 25
