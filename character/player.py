@@ -7,10 +7,11 @@ import globals
 
 class Player(BaseCharacter):
     def __init__(self, GAME: game.AppConstructor, hp, texturePath: str) -> None:
-        super().__init__(hp, texturePath)
+        super().__init__(GAME, hp, texturePath)
+        self.GAME = GAME
         self.controls = Controls(GAME)
-        self.blockBreaking = BlockBreaking()
-        self.blockPlacing = BlockPlacing(game.pygame.Rect(game.ScreenUnit.vw(50), game.ScreenUnit.vw(28), game.ScreenUnit.vw(2), game.ScreenUnit.vw(4)))
+        self.blockBreaking = BlockBreaking(GAME)
+        self.blockPlacing = BlockPlacing(GAME, game.pygame.Rect(game.ScreenUnit.vw(50), game.ScreenUnit.vw(28), game.ScreenUnit.vw(2), game.ScreenUnit.vw(4)))
         self.jumpCounter = 0
         self.playerImage = game.Image("character/jamal.png")
         self.playerImage.resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(4))
@@ -20,13 +21,13 @@ class Player(BaseCharacter):
             self.jumping = True
             self.jumpFrameCounter = 0
             self.jumpCounter += 1
-     
         
         if self.jumping:
             self.jump()
             globals.playerPosition[1] -= 0.27
         if self.isCharacterOnGround():
             self.jumpCounter = 0
+        
             
     def draw(self):
         self.characterHandler()

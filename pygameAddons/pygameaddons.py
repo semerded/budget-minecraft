@@ -58,6 +58,19 @@ previousMouseButtonStatus = []
 
 scrollValue = 0
 
+debugTimePoints = []
+import time
+class RunTimer:
+    def setTimePoint():
+        debugTimePoints.append(time.process_time())
+        
+    def getResults():
+        global debugTimePoints
+        for index, _time in enumerate(debugTimePoints):
+            print(f"{index}. {_time}")
+        debugTimePoints = []
+        
+
 class logger():
     def __init__(self, logger: bool = True, endReport: bool = False) -> None:
         self.logger = logger
@@ -425,6 +438,9 @@ class Image:
     def place(self, xPosition: float, yPosition: float):
         self.imagePosition = (xPosition, yPosition)
         mainDisplay.blit(self.image, self.imagePosition)
+        
+    def convert(self):
+        self.image.convert_alpha()
 
     @property
     def getAspectRatio(self):

@@ -2,7 +2,8 @@ import pygameAddons.pygameaddons as game
 import globals
 
 class HotBar:
-    def __init__(self) -> None:
+    def __init__(self, GAME: game.AppConstructor) -> None:
+        self.GAME = GAME
         self.hotbarBorderColor = [[250, True], [170, False], [85, False]]
         self.selectedHotSlot = 0
         self.blocksLinkedToHotbarSlot = [1, 2, 8, 5, 3, 4, 7, 17, 20]
@@ -20,6 +21,7 @@ class HotBar:
             if game.Interactions.isHoldingInRect(rect, game.mouseButton.leftMouseButton):
                 globals.blockInHand = self.blocksLinkedToHotbarSlot[index]
                 self.selectedHotSlot = index
+                self.GAME.requestUpdate
                 
             
             

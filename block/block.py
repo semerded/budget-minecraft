@@ -13,7 +13,8 @@ def makeBlockTextureList():
 def sizeBlockTextureList():
     for index in range(len(globals.BLOCK_TEXTURES)):
         if index != 0:
-            globals.BLOCK_TEXTURES[index].resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(2))            
+            globals.BLOCK_TEXTURES[index].resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(2))
+            globals.BLOCK_TEXTURES[index].convert()
 
 class Block:
     def __init__(self, blockType: int, xInMainMatrix, yInMainMatrix) -> None:

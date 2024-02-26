@@ -4,7 +4,8 @@ from math import ceil, floor
 import globals
 
 class BaseCharacter:
-    def __init__(self, hp, texturePath: str) -> None:
+    def __init__(self, GAME: game.AppConstructor, hp, texturePath: str) -> None:
+        self.GAME = GAME
         self.maxhp = hp
         self.hp = hp
         self.alive = True
@@ -26,6 +27,8 @@ class BaseCharacter:
         if self.jumpFrameCounter == self.jumpForAmountOfFrames:
             self.jumpFrameCounter = 0
             self.jumping = False
+        self.GAME.requestUpdate
+
         
     
     def updateHealth(self, difference: int):
@@ -45,13 +48,13 @@ class BaseCharacter:
         # texture path
         self.groundCharacter()
         self._roundGroundPosition()
-        #TODO
-        # globals.playerRect = game.Drawing.rectangle(game.ScreenUnit.vw(50), game.ScreenUnit.vw(30), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), game.Color.RED)
     
     def groundCharacter(self):
         if not self.jumping:
             if not self.isCharacterOnGround():
                 globals.playerPosition[1] += 0.35
+                self.GAME.requestUpdate
+                
                 
     def isCharacterOnGround(self):
         return globals.mapData[floor(globals.playerPosition[1] + 1)][floor(globals.playerPosition[0])] != 0 or globals.mapData[floor(globals.playerPosition[1] + 1)][ceil(globals.playerPosition[0])] != 0

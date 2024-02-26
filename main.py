@@ -8,7 +8,7 @@ from block.block import sizeBlockTextureList
 import sys, globals
 
 
-GAME = game.AppConstructor(game.ScreenUnit.dw(100),game.ScreenUnit.dh(100), game.pygame.NOFRAME)
+GAME = game.AppConstructor(game.ScreenUnit.dw(100),game.ScreenUnit.dh(100), game.pygame.NOFRAME, manualUpdating=True)
 GAME.setAspectratio(game.ScreenUnit.aspectRatio(game.aspectRatios.ratio16to9))
 GAME.centerApp()
 
@@ -16,20 +16,20 @@ sizeBlockTextureList()
 
 mapDrawer = MapDrawer("map.json")
 
-testCharacter = Player(GAME, 100, "")
+JAMAL = Player(GAME, 100, "")
 
 controls = Controls(GAME)
 
-hotbar = HotBar()
+hotbar = HotBar(GAME)
 
 def printFPS():
     fps = GAME.clock.get_fps()
     game.Text.simpleText((5, 5), fps, color= Color.GREEN)
 
 
-while True:
+while 1:
     GAME.eventHandler(game.pygame.event.get())
-    GAME.maindisplay.fill(Color.LIGHT_BLUE)
+    GAME.maindisplay.fill(Color.LIGHT_BLUE)  
     
     # temp (wordt verandert met menu)
     if GAME.keyboardClick(game.pygame.K_ESCAPE):
@@ -37,12 +37,12 @@ while True:
     
     controls.playerMovement()
     
-    mapDrawer.drawMap()
     
-    testCharacter.draw() 
-    hotbar.draw()
+    JAMAL.draw() 
+    if GAME.firstFrame() or GAME.updateAvalible:
+        mapDrawer.drawMap()
+        hotbar.draw()
     
     printFPS()
     
-    GAME.updateDisplay()
     

@@ -3,7 +3,8 @@ import pygameAddons.pygameaddons as game
 from block.block import Block
 
 class BlockPlacing:
-    def __init__(self, playerRect = game.pygame.Rect) -> None:
+    def __init__(self, GAME: game.AppConstructor, playerRect = game.pygame.Rect) -> None:
+        self.GAME = GAME
         self.playerRect = playerRect
         self.blockBreakRadius = []
     
@@ -26,7 +27,7 @@ class BlockPlacing:
             
             
     def checkForBlockPlace(self):
-        if game.Interactions.isClicked(game.mouseButton.rightMouseButton):
+        if game.Interactions.isHolding(game.mouseButton.rightMouseButton):
             self.calculateBlockPlacingRadius()
             for blockList in self.blockBreakRadius:
                 block: Block
@@ -34,6 +35,7 @@ class BlockPlacing:
                     if game.Interactions.isMouseOver(block.getRect):
                         if not self._checkIfBlockCollidesWithPlayer(block.getRect):
                             if not self._checkIfBlockWouldBeLevitating(block.getMainPos):
+                                self.GAME.requestUpdate
                                 globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = globals.blockInHand
                         return
                     
