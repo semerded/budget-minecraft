@@ -27,11 +27,10 @@
         "Coal" : 18,
         "Ruby" : 19,
         "Java" : 20,
-        "Dildo" : 21,
-        "Iron" : 22,
-        "Gold" : 23,
-        "Silver" : 24,
-        "Copper" : 25,
-        "Uranium" : 26
+        "Iron" : 21,
+        "Gold" : 22,
+        "Silver" : 23,
+        "Copper" : 24,
+        "Uranium" : 25
     }
 }

@@ -6,7 +6,7 @@ mapLayer = []
 height = 290
 width = 100
 
-with open("Blocks.json") as fp:
+with open("block\Blocks.json") as fp:
     mapdata = json.load(fp)
 
 for heightLayer in range(height):
