@@ -1,7 +1,6 @@
 import random, json
 
 map = []
-mapLayer = []
 
 height = 290
 width = 10
@@ -10,6 +9,7 @@ with open("block/blockList.json") as fp:
     mapdata = json.load(fp)
 
 for heightLayer in range(height):
+    mapLayer = []
     for widthLayer in range(width):
         if heightLayer <= 130:
             mapLayer.append(mapdata[0]["name"])
@@ -56,5 +56,5 @@ for heightLayer in range(height):
         elif heightLayer > 256:
             mapLayer.append(mapdata[0]["name"])
 
-    print(mapLayer)
-    map.append(mapLayer)
+        map.append(mapLayer)
+    print(map)
