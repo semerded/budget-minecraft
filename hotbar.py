@@ -9,7 +9,6 @@ class HotBar:
         for index in range(9):
             rect = game.Drawing.rectangle(game.ScreenUnit.vw(32) + (game.ScreenUnit.vw(4) * index), game.ScreenUnit.vh(92) + game.ScreenUnit.vw(0.5), game.ScreenUnit.vw(3.5), game.ScreenUnit.vw(3.5))
             game.Drawing.border(int(game.ScreenUnit.vw(0.5)), rect, self.getHotbarColor)
-        print(self.hotbarBorderColor)
             
             
     def _rgb(self):
