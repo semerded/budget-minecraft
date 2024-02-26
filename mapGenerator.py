@@ -12,26 +12,29 @@ with open("block/blockList.json") as fp:
 for heightLayer in range(height):
     for widthLayer in range(width):
         if heightLayer <= 130:
-            mapLayer.append(mapdata[1]["name"])
+            mapLayer.append(mapdata[0]["name"])
 
         elif heightLayer == 131:
-            mapLayer.append(mapdata[1]["name"])
+            mapLayer.append(mapdata[1]['name'])
 
-        elif heightLayer >= 246 and heightLayer < 253:
+        elif heightLayer >= 132 and heightLayer <= 140:
+            mapLayer.append(mapdata[2]['name'])
+
+        elif heightLayer >= 246 and heightLayer < 253: 
             chanceOnObamium = random.randint(0,499)
             if chanceOnObamium == 333:
                 mapLayer.append(mapdata[17]["name"])
-            elif chanceOnObamium != 0:
+            elif chanceOnObamium != 333:
                 chanceOnRandomOre = random.randint(0,74)
                 if chanceOnRandomOre == 0:
-                    mapLayer.append(random.randint(16,25)["name"])
+                    mapLayer.append(mapdata[random.randint(16,25)]["name"])
                 else:
                     mapLayer.append(mapdata[8]["name"])
 
-        elif heightLayer >= 132 and heightLayer < 253:
+        elif heightLayer > 140 and heightLayer < 253:
             chanceOnRandomOre = random.randint(0,74)
             if chanceOnRandomOre == 0:
-                mapLayer.append(random.randint(16,25)["name"])
+                mapLayer.append(mapdata[random.randint(16,25)]["name"])
             else:
                 mapLayer.append(mapdata[8]["name"])
     
