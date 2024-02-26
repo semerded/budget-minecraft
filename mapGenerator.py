@@ -4,56 +4,54 @@ map = []
 mapLayer = []
 
 height = 290
-width = 100
+width = 10
 
-with open("block\Blocks.json") as fp:
+with open("block/blockList.json") as fp:
     mapdata = json.load(fp)
 
 for heightLayer in range(height):
     for widthLayer in range(width):
         if heightLayer <= 130:
-            mapLayer.append(mapdata["Surface"]["Air"])
+            mapLayer.append(mapdata[1]["name"])
 
         elif heightLayer == 131:
-            mapLayer.append(mapdata["Surface"]["Grass"])
+            mapLayer.append(mapdata[1]["name"])
 
         elif heightLayer >= 246 and heightLayer < 253:
             chanceOnObamium = random.randint(0,499)
             if chanceOnObamium == 333:
-                mapLayer.append(mapdata["Ores"]["Obamium"])
+                mapLayer.append(mapdata[17]["name"])
             elif chanceOnObamium != 0:
                 chanceOnRandomOre = random.randint(0,74)
                 if chanceOnRandomOre == 0:
-                    mapdataOre = mapdata["Ores"]
-                    mapLayer.append(random.choice( list(mapdataOre.items()))[1])
+                    mapLayer.append(random.randint(16,25)["name"])
                 else:
-                    mapLayer.append(mapdata["Underground"]["Stone"])
+                    mapLayer.append(mapdata[8]["name"])
 
-        elif heightLayer >= 98 and heightLayer < 253:
+        elif heightLayer >= 132 and heightLayer < 253:
             chanceOnRandomOre = random.randint(0,74)
             if chanceOnRandomOre == 0:
-                mapdataOre = mapdata["Ores"]
-                mapLayer.append(random.choice( list(mapdataOre.items()))[1])
+                mapLayer.append(random.randint(16,25)["name"])
             else:
-                mapLayer.append(mapdata["Underground"]["Stone"])
+                mapLayer.append(mapdata[8]["name"])
     
         elif heightLayer == 253:
             if random.randint(0,4) == 2:
-                mapLayer.append(mapdata["Underground"]["Bedrock"])
+                mapLayer.append(mapdata[9]["name"])
             else:
-                mapLayer.append(mapdata["Underground"]["Stone"])
+                mapLayer.append(mapdata[8]["name"])
 
         elif heightLayer == 254:
             if random.randint(0,2) == 2:
-                mapLayer.append(mapdata["Underground"]["Bedrock"])
+                mapLayer.append(mapdata[9]["name"])
             else:
-                mapLayer.append(mapdata["Underground"]["Stone"])
+                mapLayer.append(mapdata[8]["name"])
         
         elif heightLayer == 255 or heightLayer == 256:
-            mapLayer.append(mapdata["Underground"]["Bedrock"])
+            mapLayer.append(mapdata[9]["name"])
 
         elif heightLayer > 256:
-            mapLayer.append(mapdata["Surface"]["Air"])
+            mapLayer.append(mapdata[0]["name"])
 
     print(mapLayer)
     map.append(mapLayer)
