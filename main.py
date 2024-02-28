@@ -34,7 +34,7 @@ while 1:
     # menu?
         
     controls.readKeyboardKeys()   
- 
+
     
     JAMAL.draw() 
     if GAME.firstFrame() or GAME.updateAvalible:
