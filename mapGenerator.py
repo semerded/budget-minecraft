@@ -12,6 +12,21 @@ def generateTree(heightLayer, widthLayer):
         map[heightLayer -3][widthLayer] = mapdata[5]["id"]
         map[heightLayer -2][widthLayer-1] = mapdata[6]["id"]
         map[heightLayer -2][widthLayer-2] = mapdata[6]["id"]
+        map[heightLayer -2][widthLayer+1] = mapdata[6]["id"]
+        map[heightLayer -2][widthLayer+2] = mapdata[6]["id"]
+        map[heightLayer -3][widthLayer-1] = mapdata[6]["id"]
+        map[heightLayer -3][widthLayer+1] = mapdata[6]["id"]
+        map[heightLayer -4][widthLayer] = mapdata[6]["id"]
+        map[heightLayer -4][widthLayer-1] = mapdata[6]["id"]
+        map[heightLayer -4][widthLayer+1] = mapdata[6]["id"]
+        map[heightLayer -5][widthLayer] = mapdata[6]["id"]
+
+
+def generateCave(heightLayer, widthLayer):
+    if heightLayer > 150 and heightLayer < 230:
+        chanceOnCaveSystem = random.randint(0,1000)
+        if chanceOnCaveSystem == 1:
+            pass
 
 with open("block/blockList.json") as fp:
     mapdata = json.load(fp)
@@ -38,7 +53,7 @@ for heightLayer in range(height):
         elif heightLayer > 140 and heightLayer < 253:
             chanceOnRandomOre = random.randint(0,74)
             if chanceOnRandomOre == 0:
-                mapLayer.append(mapdata[random.randint(16,25)]["id"])
+                mapLayer.append(mapdata[random.randint(10,25)]["id"])
             else:
                 mapLayer.append(mapdata[8]["id"])
 
@@ -49,7 +64,7 @@ for heightLayer in range(height):
             elif chanceOnObamium != 333:
                 chanceOnRandomOre = random.randint(0,74)
                 if chanceOnRandomOre == 0:
-                    mapLayer.append(mapdata[random.randint(16,25)]["id"])
+                    mapLayer.append(mapdata[random.randint(10,25)]["id"])
                 else:
                     mapLayer.append(mapdata[8]["id"])
     
@@ -79,7 +94,6 @@ for heightLayer in range(height):
             if mapLayer[widthLayer] == mapdata[5]["id"]:
                 generateTree(heightLayer, widthLayer)
 
-    
     map.append(mapLayer)
     # print(map)
     
