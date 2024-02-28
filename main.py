@@ -24,8 +24,11 @@ hotbar = HotBar(GAME)
 
 def printFPS():
     fps = GAME.clock.get_fps()
-    game.Text.simpleText((5, 5), fps, color= Color.GREEN)
+    game.Text.simpleText((5, 5), round(fps, 2), color= Color.GREEN)
     game.Text.simpleText((5, 25), globals.playerPosition, color= Color.GREEN)
+    game.Text.simpleText((5, 45), globals.frameRenderRequested_debug, color= Color.GREEN)
+    globals.frameRenderRequested_debug = False
+    game.pygame.display.update(game.pygame.Rect(5, 5, 50, 20))
 
 
 while 1:

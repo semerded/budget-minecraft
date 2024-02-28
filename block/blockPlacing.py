@@ -36,6 +36,7 @@ class BlockPlacing:
                         if game.Interactions.isMouseOver(block.getRect):
                             if globals.mapData[block.getMainPos[1]][block.getMainPos[0]] == 0 and not self._checkIfBlockCollidesWithPlayer(block.getRect) and not self._checkIfBlockWouldBeLevitating(block.getMainPos):
                                     self.GAME.requestUpdate
+                                    globals.requestNewRender = True
                                     globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = globals.blockInHand
                             return
                     

@@ -14,9 +14,14 @@ makeBlockTextureList()
 
 blockInHand = 1
 
+requestNewRender = True
+currentRenderedRange = [-1, -1]
+
 playerJumpKey = False
 
 generatedPlayerY = [14, 15]
 generatedPlayerX = 25
 playerRect = None
+
+frameRenderRequested_debug = False
 
