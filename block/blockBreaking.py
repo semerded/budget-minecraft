@@ -21,10 +21,11 @@ class BlockBreaking:
             for blockList in self.blockBreakRadius:
                 block: Block
                 for block in blockList:
-                    if game.Interactions.isMouseOver(block.getRect) and self._subjectedToAir(block.getMainPos):
-                        self.GAME.requestUpdate  
-                        globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
-                        return
+                    if block != None:
+                        if game.Interactions.isMouseOver(block.getRect) and self._subjectedToAir(block.getMainPos):
+                            self.GAME.requestUpdate  
+                            globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
+                            return
                     
     def _subjectedToAir(self, blockPosition):
         def _isNeighbourBlockAir(xOffset: int, yOffset: int):

@@ -23,11 +23,11 @@ class Controls:
         
         if globals.mapData[floor(globals.playerPosition[1])][round(globals.playerPosition[0] - 0.60)] == 0 and globals.mapData[floor(globals.playerPosition[1] - 1)][ceil(globals.playerPosition[0] - 0.60)] == 0:
             if self.keyboardEvents[game.pygame.K_LEFT] or self.keyboardEvents[game.pygame.K_q]:
-                globals.playerPosition[0] -= 0.10
+                globals.playerPosition[0] = (globals.playerPosition[0]-  0.10)
                 self.GAME.requestUpdate
         if globals.mapData[floor(globals.playerPosition[1])][round(globals.playerPosition[0] + 0.60)] == 0 and globals.mapData[floor(globals.playerPosition[1] - 1)][floor(globals.playerPosition[0] + 0.60)] == 0:
             if self.keyboardEvents[game.pygame.K_RIGHT] or self.keyboardEvents[game.pygame.K_d]:
-                globals.playerPosition[0] += 0.10
+                globals.playerPosition[0] = (globals.playerPosition[0] + 0.10)
                 self.GAME.requestUpdate
                 
                 

@@ -8,6 +8,7 @@ class MapReader:
         self.xOffset = 0
         self.yOffset = 0
         
+        
     def openAndReadFile(self):
         with open(self.mapPath) as filePath:
             globals.mapData = json.load(filePath)
@@ -22,5 +23,20 @@ class MapReader:
         for height in range(*heightRange):
             widthList = []
             for width in range(*widthRange):
-                widthList.append(Block(globals.mapData[height][width], width, height))
+                if self._subjectedToAir(width, height):
+                    widthList.append(Block(globals.mapData[height][width], width, height))
+                else:
+                    widthList.append(None)
             globals.renderdMapData.append(widthList)
+
+    def _subjectedToAir(self, xPos: int, yPos: int):
+        def _isNeighbourBlockAir(xOffset: int, yOffset: int):
+            return globals.mapData[yPos + yOffset][xPos + xOffset] == 0
+        result = False
+        for y in range(-2, 3):
+            for x in range(-2, 3):
+                if _isNeighbourBlockAir(x, y):
+                    result = True
+        return result
+                    
+        # return _isNeighbourBlockAir(0, 1) or _isNeighbourBlockAir(0, -1) or _isNeighbourBlockAir(1, 0) or _isNeighbourBlockAir(-1, 0) or _isNeighbourBlockAir(1, 1) or _isNeighbourBlockAir(1, -1) or _isNeighbourBlockAir(-1, 1) or _isNeighbourBlockAir(-1, -1)

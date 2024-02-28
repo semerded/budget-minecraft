@@ -24,7 +24,8 @@ hotbar = HotBar(GAME)
 
 def printFPS():
     fps = GAME.clock.get_fps()
-    game.Text.simpleText((5, 5), fps, color= Color.RED)
+    game.Text.simpleText((5, 5), fps, color= Color.GREEN)
+    game.Text.simpleText((5, 25), globals.playerPosition, color= Color.GREEN)
 
 
 while 1:
