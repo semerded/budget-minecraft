@@ -6,6 +6,13 @@ map = []
 height = 290
 width = 100
 
+def generateTree(heightLayer, widthLayer):
+        map[heightLayer -1][widthLayer] = mapdata[5]["id"]
+        map[heightLayer -2][widthLayer] = mapdata[5]["id"]
+        map[heightLayer -3][widthLayer] = mapdata[5]["id"]
+        map[heightLayer -2][widthLayer-1] = mapdata[6]["id"]
+        map[heightLayer -2][widthLayer-2] = mapdata[6]["id"]
+
 with open("block/blockList.json") as fp:
     mapdata = json.load(fp)
 
@@ -68,8 +75,10 @@ for heightLayer in range(height):
             if mapLayer[-2] == mapdata[5]["id"]:
                 mapLayer[-1] = mapdata[0]["id"]
 
-            else:
-                map[heightLayer -1][widthLayer] == mapdata[5]["id"]
+        if mapdata[5]["id"] in mapLayer:
+            if mapLayer[widthLayer] == mapdata[5]["id"]:
+                generateTree(heightLayer, widthLayer)
+
     
     map.append(mapLayer)
     # print(map)
