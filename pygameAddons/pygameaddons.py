@@ -111,9 +111,7 @@ class AppConstructor():
         self.fps = fps
         self.clock.tick(fps)
         
-        if not self.manualUpdating:
-            Updating.updateDisplay()
-        elif self.updatePending:
+        if self.updatePending:
             Updating.updateDisplay()
             self.updatePending = False
         elif self.frameCounter < 2:
@@ -125,23 +123,7 @@ class AppConstructor():
             
         self.appEvents = appEvents
         for event in self.appEvents:
-            if event.type == pygame.QUIT:
-                if self.modifiedFunctions["quit"] == None:
-                    pygame.quit()
-                    sys.exit()
-                else:
-                    self.modifiedFunctions["quit"]()
-
-            elif event.type == pygame.WINDOWRESIZED:
-                appScreenWidth, appScreenHeight = self.getAppScreenDimensions
-                if self.minimumScreenWidth != None and self.minimumScreenHeight != None:
-                    self.checkForMinimumScreenSizeBreaches()
-                if self.aspectRatioActive and self.getAppScreenDimensions[0] != userScreenWidth:
-                    self.updateAspectRatio()
-                self.updatePending = True
-                
-
-            elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseButtonsStatus[event.button] = True
                 Interactions._mouseButtonPositiveFlank(event.button)
                 self.resetFlank = True
@@ -151,10 +133,7 @@ class AppConstructor():
                 Interactions._mouseButtonNegativeFlank(event.button)
                 self.resetFlank = True
             
-            if event.type == pygame.MOUSEWHEEL:
-                scrollValue = event.y
-            else:
-                scrollValue = 0
+
             
         self.frameCounter += 1
         

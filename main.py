@@ -5,7 +5,7 @@ from character.player import Player
 from controls import Controls
 from hotbar import HotBar
 from block.block import sizeBlockTextureList
-import sys, globals
+import globals
 
 
 GAME = game.AppConstructor(game.ScreenUnit.dw(100),game.ScreenUnit.dh(100), game.pygame.NOFRAME, manualUpdating=True)
@@ -24,24 +24,22 @@ hotbar = HotBar(GAME)
 
 def printFPS():
     fps = GAME.clock.get_fps()
-    game.Text.simpleText((5, 5), fps, color= Color.GREEN)
+    game.Text.simpleText((5, 5), fps, color= Color.RED)
 
 
 while 1:
     GAME.eventHandler(game.pygame.event.get())
     GAME.maindisplay.fill(Color.LIGHT_BLUE)  
     
-    # temp (wordt verandert met menu)
-    if GAME.keyboardClick(game.pygame.K_ESCAPE):
-        sys.exit() 
-    
-    controls.playerMovement()
-    
+    # menu?
+        
+    controls.readKeyboardKeys()   
+ 
     
     JAMAL.draw() 
     if GAME.firstFrame() or GAME.updateAvalible:
         mapDrawer.drawMap()
-        hotbar.draw()
+    hotbar.draw()
     
     printFPS()
     
