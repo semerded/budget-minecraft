@@ -5,7 +5,7 @@ from block.block import makeBlockTextureList, Block
 
 
 
-playerPosition = [50, 50]
+playerPosition = [50, 130]
 mapData = []
 renderdMapData = []
 BLOCK_TEXTURES: list[Block] = []
