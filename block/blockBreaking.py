@@ -23,7 +23,8 @@ class BlockBreaking:
                 for block in blockList:
                     if block != None:
                         if game.Interactions.isMouseOver(block.getRect) and self._subjectedToAir(block.getMainPos):
-                            self.GAME.requestUpdate  
+                            self.GAME.requestUpdate
+                            globals.requestNewRender = True  
                             globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
                             return
                     

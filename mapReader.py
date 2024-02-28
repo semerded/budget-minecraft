@@ -14,20 +14,29 @@ class MapReader:
             globals.mapData = json.load(filePath)
         
     def isolateVisableTerrain(self):
-        globals.renderdMapData = []
         widthRange = (round(globals.playerPosition[0] - 25), round(globals.playerPosition[0] + 27))
         heightRange = (round(globals.playerPosition[1] - 15), round(globals.playerPosition[1] + 15))
         self.xOffset = (globals.playerPosition[0] - 30) - round(globals.playerPosition[0] - 30)
         self.yOffset = (globals.playerPosition[1] - 15) - round(globals.playerPosition[1] - 15)
+        
+        if globals.currentRenderedRange[0] != widthRange or globals.currentRenderedRange[1] != heightRange:
+            globals.currentRenderedRange[0] = widthRange
+            globals.currentRenderedRange[1] = heightRange
+            globals.requestNewRender = True
 
-        for height in range(*heightRange):
-            widthList = []
-            for width in range(*widthRange):
-                if self._subjectedToAir(width, height):
-                    widthList.append(Block(globals.mapData[height][width], width, height))
-                else:
-                    widthList.append(None)
-            globals.renderdMapData.append(widthList)
+        if globals.requestNewRender:
+            globals.renderdMapData = []
+
+            globals.frameRenderRequested_debug = True
+            for height in range(*heightRange):
+                widthList = []
+                for width in range(*widthRange):
+                    if self._subjectedToAir(width, height):
+                        widthList.append(Block(globals.mapData[height][width], width, height))
+                    else:
+                        widthList.append(None)
+                globals.renderdMapData.append(widthList)
+            globals.requestNewRender = False
 
     def _subjectedToAir(self, xPos: int, yPos: int):
         def _isNeighbourBlockAir(xOffset: int, yOffset: int):
