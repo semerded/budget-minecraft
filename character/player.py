@@ -11,8 +11,6 @@ class Player(BaseCharacter):
         self.blockBreaking = BlockBreaking(GAME)
         self.blockPlacing = BlockPlacing(GAME, game.pygame.Rect(game.ScreenUnit.vw(50), game.ScreenUnit.vw(28), game.ScreenUnit.vw(2), game.ScreenUnit.vw(4)))
         self.jumpCounter = 0
-        self.playerImage = game.Image("character/jamal.png")
-        self.playerImage.resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(4))
         
     def playerJump(self):
         if self.jumpCounter < 2 and globals.playerJumpKey:
@@ -32,7 +30,6 @@ class Player(BaseCharacter):
         self.blockBreaking.checkForBlockBreak()
         self.blockPlacing.checkForBlockPlace()
         self.playerJump()
-        self.playerImage.place(game.ScreenUnit.vw(50), game.ScreenUnit.vw(28))
         
         
     def _checkForValidBlockToBreak(self):

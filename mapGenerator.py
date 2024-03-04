@@ -4,7 +4,7 @@ from pyperclip import copy
 map = []
 
 height = 290
-width = 100
+width = 1000
 
 def generateTree(heightLayer, widthLayer):
         map[heightLayer -1][widthLayer] = mapdata[5]["id"]

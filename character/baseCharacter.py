@@ -4,16 +4,19 @@ from math import ceil, floor
 import globals
 
 class BaseCharacter:
+    jumpFrameCounter = 0
+    JUMP_FOR_AMOUNT_OF_FRAMES = 20
+    jumping = False
+    alive = True
+
+    
     def __init__(self, GAME: game.AppConstructor, hp, texturePath: str) -> None:
         self.GAME = GAME
         self.maxhp = hp
         self.hp = hp
-        self.alive = True
-        self.texturePath = texturePath
-        self.jumping = False
-        self.jumpForAmountOfFrames = 20
-        self.jumpFrameCounter = 0
-        
+        self.characterImage = game.Image(texturePath)
+        self.characterImage.resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(4))
+
     def moveLeft(self):
         pass
     
@@ -24,7 +27,7 @@ class BaseCharacter:
         if self.jumping:
             self._checkHeadCollision()
             self.jumpFrameCounter += 1
-        if self.jumpFrameCounter == self.jumpForAmountOfFrames:
+        if self.jumpFrameCounter == self.JUMP_FOR_AMOUNT_OF_FRAMES:
             self.jumpFrameCounter = 0
             self.jumping = False
         self.GAME.requestUpdate
@@ -48,6 +51,8 @@ class BaseCharacter:
         # texture path
         self.groundCharacter()
         self._roundGroundPosition()
+        self.characterImage.place(game.ScreenUnit.vw(50), game.ScreenUnit.vw(28))
+
     
     def groundCharacter(self):
         if not self.jumping:

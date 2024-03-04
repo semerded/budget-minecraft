@@ -6,6 +6,7 @@ class BlockBreaking:
     def __init__(self, GAME: game.AppConstructor) -> None:
         self.GAME = GAME
         self.blockBreakRadius = []
+        self.breakingTickCounter = 0
     
     def calculateBlockBreakingRadius(self):
         self.blockBreakRadius = []
@@ -24,9 +25,13 @@ class BlockBreaking:
                     if block != None:
                         if game.Interactions.isMouseOver(block.getRect) and self._subjectedToAir(block.getMainPos):
                             self.GAME.requestUpdate
-                            globals.requestNewRender = True  
-                            globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
+                            globals.requestNewRender = True
+                            self.breakingTickCounter += 1
+                            if self.breakingTickCounter >= (block.hardness / globals.miningSpeedMultiplier):
+                                globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
+                                self.breakingTickCounter = 0
                             return
+        self.breakingTickCounter = 0
                     
     def _subjectedToAir(self, blockPosition):
         def _isNeighbourBlockAir(xOffset: int, yOffset: int):

@@ -1,131 +1,157 @@
 [
     {
         "id": 0,
+        "hardness": 0,
         "name": "Air",
         "image": null
     },
     {
         "id": 1,
+        "hardness": 20,
         "name": "Grass",
         "image": "block/BlockTextures/Grass.png"
     },
     {
         "id": 2,
+        "hardness": 18,
         "name": "Dirt",
         "image": "block/BlockTextures/Dirt.png"
     },
     {
         "id": 3,
+        "hardness": 15,
         "name": "Sand",
         "image": "block/BlockTextures/Sand.png"
     },
     {
         "id": 4,
+        "hardness": 20,
         "name": "Gravel",
         "image": "block/BlockTextures/Gravel.png"
     },
     {
         "id": 5,
+        "hardness": 60,
         "name": "Wood",
         "image": "block/BlockTextures/Wood.png"
     },
     {
         "id": 6,
+        "hardness": 10,
         "name": "Leaves",
         "image": "block/BlockTextures/Leaves.png"
     },
     {
         "id": 7,
+        "hardness": 180,
         "name": "Ironblock",
         "image": "block/BlockTextures/IronBlock.png"
     },
     {
         "id": 8,
+        "hardness": 120,
         "name": "Stone",
         "image": "block/BlockTextures/Stone.png"
     },
     {
         "id": 9,
+        "hardness": 9999999999999999999999999,
         "name": "Bedrock",
         "image": "block/BlockTextures/Bedrock.png"
     },
     {
         "id": 10,
+        "hardness": 20,
         "name": "Birdshit",
         "image": "block/BlockTextures/Birdshit.png"
     },
     {
         "id": 11,
+        "hardness": 60,
         "name": "Dinoshit",
         "image": "block/BlockTextures/Dinoshit.png"
     },
     {
         "id": 12,
+        "hardness": 240,
         "name": "Hardstone",
         "image": "block/BlockTextures/Hardstone.png"
     },
     {
         "id": 13,
+        "hardness": 60,
         "name": "Softstone",
         "image": "block/BlockTextures/Softstone.png"
     },
     {
         "id": 14,
+        "hardness": 120,
         "name": "Hotstone",
         "image": "block/BlockTextures/Hotstone.png"
     },
     {
         "id": 15,
+        "hardness": 20,
         "name": "Wildslime",
         "image": "block/BlockTextures/Wildslime.png"
     },
     {
         "id": 16,
+        "hardness": 300,
         "name": "Diamond",
         "image": "block/BlockTextures/Diamond.png"
     },
     {
         "id": 17,
+        "hardness": 360,
         "name": "Obamium",
         "image": "block/BlockTextures/Obamium.png"
     },
     {
         "id": 18,
+        "hardness": 200,
         "name": "Coal",
         "image": "block/BlockTextures/Coal.png"
     },
     {
         "id": 19,
+        "hardness": 300,
         "name": "Ruby",
         "image": "block/BlockTextures/Ruby.png"
     },
     {
         "id": 20,
+        "hardness": 260,
         "name": "Java",
         "image": "block/BlockTextures/Java.png"
     },
     {
         "id": 21,
+        "hardness": 150,
         "name": "Iron",
         "image": "block/BlockTextures/IronOre.png"
     },
     {
         "id": 22,
+        "hardness": 180,
         "name": "Gold",
         "image": "block/BlockTextures/Gold.png"
     },
     {
         "id": 23,
+        "hardness": 160,
         "name": "Silver",
         "image": "block/BlockTextures/Silver.png"
     },
     {
         "id": 24,
+        "hardness": 150,
         "name": "Copper",
         "image": "block/BlockTextures/Copper.png"
     },
     {
         "id": 25,
+        "hardness": 600,
         "name": "Uranium",
         "image": "block/BlockTextures/Uranium.png"
     }

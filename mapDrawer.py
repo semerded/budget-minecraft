@@ -16,7 +16,7 @@ class MapDrawer(MapReader):
             block : Block
             for x, block in enumerate(blockRow):
                 if block == None:
-                    pass
-                    game.Drawing.rectangle((x * game.ScreenUnit.vw(2)) - (game.ScreenUnit.vw(2) * self.xOffset) , (y * game.ScreenUnit.vw(2)) - (game.ScreenUnit.vw(2) * self.yOffset), game.ScreenUnit.vw(2.01), game.ScreenUnit.vw(2.01), Color.BLACK)
+                    rect = game.Drawing.rectangle((x * game.ScreenUnit.vw(2)) - (game.ScreenUnit.vw(2) * self.xOffset) , (y * game.ScreenUnit.vw(2)) - (game.ScreenUnit.vw(2) * self.yOffset), game.ScreenUnit.vw(2), game.ScreenUnit.vw(2), Color.BLACK)
+                    game.Drawing.border(1, rect)
                 else:
                     block.place(x, y,self.xOffset, self.yOffset)

@@ -16,7 +16,7 @@ sizeBlockTextureList()
 
 mapDrawer = MapDrawer("map.json")
 
-JAMAL = Player(GAME, 100, "")
+JAMAL = Player(GAME, 100, "character/jamal.png")
 
 controls = Controls(GAME)
 
