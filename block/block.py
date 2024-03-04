@@ -6,19 +6,31 @@ def makeBlockTextureList():
         blockData = json.load(fp)
     for data in blockData:
         if data["image"] != None:
-            globals.BLOCK_TEXTURES.append(game.Image(data["image"]))
+            blockDataDict = {"name": data["name"], "image": game.Image(data["image"]), "hardness": data["hardness"]}
+            globals.BLOCK_TEXTURES.append(blockDataDict)
         else:
-            globals.BLOCK_TEXTURES.append(None)
+            blockDataDict = {"name": data["name"], "image": None, "hardness": 0}
+            globals.BLOCK_TEXTURES.append(blockDataDict)
+
+
+def loadBlockBreakingTextures():
+    for index in range(8):
+        imageNumber = index + 1
+        globals.BLOCK_BREAKING_TEXTURES.append(game.Image("block/blockbreaking_textures/%s.png" %imageNumber))
+        globals.BLOCK_BREAKING_TEXTURES[index].resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(2))
+
             
 def sizeBlockTextureList():
     for index in range(len(globals.BLOCK_TEXTURES)):
         if index != 0:
-            globals.BLOCK_TEXTURES[index].resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(2))
-            globals.BLOCK_TEXTURES[index].convert()
+            globals.BLOCK_TEXTURES[index]["image"].resize(game.ScreenUnit.vw(2), game.ScreenUnit.vw(2))
+            globals.BLOCK_TEXTURES[index]["image"].convert()
 
 class Block:
     def __init__(self, blockType: int, xInMainMatrix, yInMainMatrix) -> None:
-        self.blockTexture: game.Image = globals.BLOCK_TEXTURES[blockType]
+        self.blockTexture: game.Image = globals.BLOCK_TEXTURES[blockType]["image"]
+        self.name = globals.BLOCK_TEXTURES[blockType]["name"]
+        self.hardness = globals.BLOCK_TEXTURES[blockType]["hardness"]
 
         self.rect = game.pygame.Rect(0,0, 0, 0)
         self.mainMatrixPos = (xInMainMatrix, yInMainMatrix)

@@ -1,6 +1,7 @@
 import globals
 import pygameAddons.pygameaddons as game
 from block.block import Block
+from math import ceil
 
 class BlockBreaking:
     def __init__(self, GAME: game.AppConstructor) -> None:
@@ -27,11 +28,19 @@ class BlockBreaking:
                             self.GAME.requestUpdate
                             globals.requestNewRender = True
                             self.breakingTickCounter += 1
+                            
+                                                        
                             if self.breakingTickCounter >= (block.hardness / globals.miningSpeedMultiplier):
                                 globals.mapData[block.getMainPos[1]][block.getMainPos[0]] = 0
                                 self.breakingTickCounter = 0
+                                globals.blockBreakingAnimation.setBlockBreakingAnimation(False)
+                                return
+                            globals.blockBreakingAnimation.setBlockBreakingAnimation(ceil((self.breakingTickCounter / block.hardness) * 8), block.getRect)
                             return
-        self.breakingTickCounter = 0
+        else: 
+            self.breakingTickCounter = 0
+            globals.blockBreakingAnimation.setBlockBreakingAnimation(False)
+        
                     
     def _subjectedToAir(self, blockPosition):
         def _isNeighbourBlockAir(xOffset: int, yOffset: int):

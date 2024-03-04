@@ -4,7 +4,7 @@ from mapDrawer import MapDrawer
 from character.player import Player
 from controls import Controls
 from hotbar import HotBar
-from block.block import sizeBlockTextureList
+from block.block import sizeBlockTextureList, loadBlockBreakingTextures
 import globals
 
 
@@ -13,6 +13,7 @@ GAME.setAspectratio(game.ScreenUnit.aspectRatio(game.aspectRatios.ratio16to9))
 GAME.centerApp()
 
 sizeBlockTextureList()
+loadBlockBreakingTextures()
 
 mapDrawer = MapDrawer("map.json")
 
@@ -43,6 +44,7 @@ while 1:
     JAMAL.draw() 
     if GAME.firstFrame() or GAME.updateAvalible:
         mapDrawer.drawMap()
+    globals.blockBreakingAnimation.place()
     hotbar.draw()
     
     printFPS()
