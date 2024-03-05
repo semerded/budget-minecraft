@@ -67,15 +67,12 @@ def generateTree(heightLayer, widthLayer):
         map[heightLayer -5][widthLayer] = mapdata[6]["id"]
 
 def generateCave(heightLayer, widthLayer):
-    if heightLayer > 150 and heightLayer < 230:
+    if heightLayer > 190 and heightLayer < 230:
         chanceOnCaveSystem = random.randint(0,1000)
         if chanceOnCaveSystem == 1:
-            map[heightLayer][widthLayer] = mapdata[0]["id"]
-            map[heightLayer][widthLayer-1] = mapdata[0]["id"]
-            map[heightLayer][widthLayer-2] = mapdata[0]["id"]
-            map[heightLayer -1][widthLayer] = mapdata[0]["id"]
-            map[heightLayer -1][widthLayer-1] = mapdata[0]["id"]
-            map[heightLayer -1][widthLayer-2] = mapdata[0]["id"]
+           for heightIndex in range(1,random.randint(5,40)):
+               for widthIndex in range(0,random.randint(10,120)):
+                    map[heightLayer - heightIndex][widthLayer - widthIndex] = mapdata[random.randint(0,25)]["id"]
 
 with open("block/blockList.json") as fp:
     mapdata = json.load(fp)
@@ -87,6 +84,7 @@ for heightLayer in range(height):
         generateAirLayers(heightLayer, widthLayer)
         generateUnderground(heightLayer, widthLayer)
         generateBedrockLayers(heightLayer,widthLayer)
+        generateCave(heightLayer, widthLayer)
 
         if heightLayer == 130:
             chanceOnTree = random.randint(0,20)

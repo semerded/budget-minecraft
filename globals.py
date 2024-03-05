@@ -7,7 +7,7 @@ from block.blockBreakingAnimation import BlockBreakingAnimation
 
 
 
-playerPosition = [50, 130]
+playerPosition = [500, 130]
 mapData = []
 renderdMapData = []
 BLOCK_TEXTURES: list[Block] = []
