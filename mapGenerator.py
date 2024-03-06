@@ -52,19 +52,21 @@ def generateBedrockLayers(heightLayer: int, widthLayer: int):
         mapLayer.append(mapdata[9]["id"])
 
 def generateTree(heightLayer, widthLayer):
-        map[heightLayer -1][widthLayer] = mapdata[5]["id"]
-        map[heightLayer -2][widthLayer] = mapdata[5]["id"]
-        map[heightLayer -3][widthLayer] = mapdata[5]["id"]
-        map[heightLayer -2][widthLayer-1] = mapdata[6]["id"]
-        map[heightLayer -2][widthLayer-2] = mapdata[6]["id"]
-        map[heightLayer -2][widthLayer+1] = mapdata[6]["id"]
-        map[heightLayer -2][widthLayer+2] = mapdata[6]["id"]
-        map[heightLayer -3][widthLayer-1] = mapdata[6]["id"]
-        map[heightLayer -3][widthLayer+1] = mapdata[6]["id"]
-        map[heightLayer -4][widthLayer] = mapdata[6]["id"]
-        map[heightLayer -4][widthLayer-1] = mapdata[6]["id"]
-        map[heightLayer -4][widthLayer+1] = mapdata[6]["id"]
-        map[heightLayer -5][widthLayer] = mapdata[6]["id"]
+        
+        if widthLayer < width - 4:
+            map[heightLayer -1][widthLayer] = mapdata[5]["id"]
+            map[heightLayer -2][widthLayer] = mapdata[5]["id"]
+            map[heightLayer -3][widthLayer] = mapdata[5]["id"]
+            map[heightLayer -2][widthLayer-1] = mapdata[6]["id"]
+            map[heightLayer -2][widthLayer-2] = mapdata[6]["id"]
+            map[heightLayer -2][widthLayer+1] = mapdata[6]["id"]
+            map[heightLayer -2][widthLayer+2] = mapdata[6]["id"]
+            map[heightLayer -3][widthLayer-1] = mapdata[6]["id"]
+            map[heightLayer -3][widthLayer+1] = mapdata[6]["id"]
+            map[heightLayer -4][widthLayer] = mapdata[6]["id"]
+            map[heightLayer -4][widthLayer-1] = mapdata[6]["id"]
+            map[heightLayer -4][widthLayer+1] = mapdata[6]["id"]
+            map[heightLayer -5][widthLayer] = mapdata[6]["id"]
 
 def generateCave(heightLayer, widthLayer):
     if heightLayer > 190 and heightLayer < 230:
