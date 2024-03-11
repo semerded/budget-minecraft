@@ -13,6 +13,7 @@ class Controls:
         self.closeKey()
         self.playerMovement()
         self.playerJump()
+        self.creativeKey()
 
     def closeKey(self):
         if self.keyboardEvents[game.pygame.K_ESCAPE]:
@@ -33,6 +34,12 @@ class Controls:
                 
     def playerJump(self):
         globals.playerJumpKey = self.keyboardEvents[game.pygame.K_SPACE]
+        
+    def creativeKey(self):
+        if self.keyboardEvents[game.pygame.K_F3]:
+            globals.miningSpeedMultiplier = 9999999999999999999999999 # om bedrock te breken
+        if self.keyboardEvents[game.pygame.K_BACKSPACE]:
+            globals.miningSpeedMultiplier = 1
 
 
         

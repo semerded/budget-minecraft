@@ -11,7 +11,6 @@ class BlockBreakingAnimation:
             self.active = True
             self.imageNumber = args[0]
             self.rect = args[1]
-            print(self.imageNumber)
         else:
             self.active = False
             

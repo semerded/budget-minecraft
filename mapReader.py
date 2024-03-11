@@ -9,7 +9,7 @@ class MapReader:
         self.yOffset = 0
         
         
-    def openAndReadFile(self):
+    def openAndReadFile(self): # kan gebruikt worden als je een andere map wil inladen
         with open(self.mapPath) as filePath:
             globals.mapData = json.load(filePath)
         

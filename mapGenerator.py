@@ -2,9 +2,10 @@ import random, json
 from pyperclip import copy
 
 map = []
+mapLayer = []
+with open("block/blockList.json") as fp:
+    mapdata = json.load(fp)
 
-height = 290
-width = 1000
 
 def generateAirLayers(heightLayer:int, widthLayer:int):
     if heightLayer <= 129:
@@ -13,7 +14,7 @@ def generateAirLayers(heightLayer:int, widthLayer:int):
     elif heightLayer > 256:
         mapLayer.append(mapdata[0]["id"])
 
-def generateUnderground(heighLayer: int, widthLayer: int):
+def generateUnderground(heightLayer: int, widthLayer: int):
     if heightLayer >= 132 and heightLayer <= 140:
         mapLayer.append(mapdata[2]['id'])
 
@@ -51,7 +52,7 @@ def generateBedrockLayers(heightLayer: int, widthLayer: int):
     elif heightLayer == 255 or heightLayer == 256:
         mapLayer.append(mapdata[9]["id"])
 
-def generateTree(heightLayer, widthLayer):
+def generateTree(heightLayer, widthLayer, width):
         
         if widthLayer < width - 4:
             map[heightLayer -1][widthLayer] = mapdata[5]["id"]
@@ -72,41 +73,40 @@ def generateCave(heightLayer, widthLayer):
     if heightLayer > 190 and heightLayer < 230:
         chanceOnCaveSystem = random.randint(0,1000)
         if chanceOnCaveSystem == 1:
-           for heightIndex in range(1,random.randint(5,40)):
-               for widthIndex in range(0,random.randint(10,120)):
+            for heightIndex in range(1,random.randint(5,40)):
+                for widthIndex in range(0,random.randint(10,120)):
                     map[heightLayer - heightIndex][widthLayer - widthIndex] = mapdata[random.randint(0,25)]["id"]
 
-with open("block/blockList.json") as fp:
-    mapdata = json.load(fp)
+def generateMap(width: int, height: int) -> list[list[int]]:
+    global mapLayer
 
-for heightLayer in range(height):
-    mapLayer = []
-    for widthLayer in range(width):
+    for heightLayer in range(height):
+        mapLayer = []
+        for widthLayer in range(width):
 
-        generateAirLayers(heightLayer, widthLayer)
-        generateUnderground(heightLayer, widthLayer)
-        generateBedrockLayers(heightLayer,widthLayer)
-        generateCave(heightLayer, widthLayer)
+            generateAirLayers(heightLayer, widthLayer)
+            generateUnderground(heightLayer, widthLayer)
+            generateBedrockLayers(heightLayer,widthLayer)
+            generateCave(heightLayer, widthLayer)
 
-        if heightLayer == 130:
-            chanceOnTree = random.randint(0,20)
-            if chanceOnTree == 1:
-                mapLayer.append(mapdata[5]["id"])
-            else:
-                mapLayer.append(mapdata[0]["id"])
+            if heightLayer == 130:
+                chanceOnTree = random.randint(0,20)
+                if chanceOnTree == 1:
+                    mapLayer.append(mapdata[5]["id"])
+                else:
+                    mapLayer.append(mapdata[0]["id"])
 
-        elif heightLayer == 131:
-            mapLayer.append(mapdata[1]['id'])
+            elif heightLayer == 131:
+                mapLayer.append(mapdata[1]['id'])
 
-        if mapdata[5]["id"] in mapLayer:
-            if mapLayer[-2] == mapdata[5]["id"]:
-                mapLayer[widthLayer] = mapdata[0]["id"]
+            if mapdata[5]["id"] in mapLayer:
+                if mapLayer[-2] == mapdata[5]["id"]:
+                    mapLayer[widthLayer] = mapdata[0]["id"]
 
-        if mapdata[5]["id"] in mapLayer:
-            if mapLayer[widthLayer] == mapdata[5]["id"]:
-                generateTree(heightLayer, widthLayer)
+            if mapdata[5]["id"] in mapLayer:
+                if mapLayer[widthLayer] == mapdata[5]["id"]:
+                    generateTree(heightLayer, widthLayer, width)
 
-    map.append(mapLayer)
-    # print(map)
-    
-copy(f"{map}")
+        map.append(mapLayer)
+    return map
+
